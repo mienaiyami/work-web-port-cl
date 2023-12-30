@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowDown, Plus } from "lucide-react";
 import ButtonDouble from "./components/ButtonDouble";
+import Questions from "./components/Questions";
+import SlideInLetters from "./components/SlideInLetters";
 
 const servicesData = [
     {
@@ -22,34 +24,6 @@ const servicesData = [
         title: "Web Design",
         desc: "This includes creating unique designs that reflect a company's identity and goals, while also taking into account various aspects of page design such as user experience, usability, navigation, content organization and presentation.",
         img: "/placeholder.svg",
-    },
-];
-
-const accordionData = [
-    {
-        title: "How long do projects typically take?",
-        details:
-            "This involves creating a custom solution for clients who want an online presence tailored to their specific needs. The process involves understanding the client's requirements, analyzing existing solutions, and then designing, coding, and testing the web application.",
-    },
-    {
-        title: "How long do projects typically take?",
-        details:
-            "This involves creating a custom solution for clients who want an online presence tailored to their specific needs. The process involves understanding the client's requirements, analyzing existing solutions, and then designing, coding, and testing the web application.",
-    },
-    {
-        title: "How long do projects typically take?",
-        details:
-            "This involves creating a custom solution for clients who want an online presence tailored to their specific needs. The process involves understanding the client's requirements, analyzing existing solutions, and then designing, coding, and testing the web application.",
-    },
-    {
-        title: "How long do projects typically take?",
-        details:
-            "This involves creating a custom solution for clients who want an online presence tailored to their specific needs. The process involves understanding the client's requirements, analyzing existing solutions, and then designing, coding, and testing the web application.",
-    },
-    {
-        title: "How long do projects typically take?",
-        details:
-            "This involves creating a custom solution for clients who want an online presence tailored to their specific needs. The process involves understanding the client's requirements, analyzing existing solutions, and then designing, coding, and testing the web application.",
     },
 ];
 
@@ -72,10 +46,15 @@ export default function Home() {
                         variant="light"
                         asIcon
                     >
-                        <ArrowDown size={"1rem"} />
+                        <Link href="#intro">
+                            <ArrowDown size={"0.9rem"} />
+                        </Link>
                     </ButtonDouble>
                 </div>
-                <div className="text-5xl max-w-3xl font-light text-center mx-auto">
+                <div
+                    className="text-5xl max-w-3xl font-light text-center mx-auto scroll-mt-20"
+                    id="intro"
+                >
                     With years of experience in the industry, I have worked with
                     businesses of all sizes.
                 </div>
@@ -98,7 +77,9 @@ export default function Home() {
                     stunning websites and designs that capture their
                     brand&apos;s identity.
                 </div>
-                <ButtonDouble className="uppercase">view my portfolio</ButtonDouble>
+                <ButtonDouble className="uppercase">
+                    view my portfolio
+                </ButtonDouble>
                 <div className="flex flex-col w-full">
                     {[
                         {
@@ -140,17 +121,25 @@ export default function Home() {
                         variant="light"
                         asIcon
                     >
-                        <ArrowDown size={"1rem"} />
+                        <Link href={"#services"}>
+                            <ArrowDown size={"0.9rem"} />
+                        </Link>
                     </ButtonDouble>
                 </div>
-                <div className="max-w-sm text-xl text-center">
+                <div
+                    className="max-w-sm text-xl text-center scroll-mt-20"
+                    id="services"
+                >
                     I have worked with businesses of all sizes to create
                     stunning websites and designs that capture their
                     brand&apos;s identity.
                 </div>
-                <ButtonDouble className="uppercase" variant="light">
-                    SCHEDULE A CALL
-                </ButtonDouble>
+
+                <Link href={"/contact"}>
+                    <ButtonDouble className="uppercase" variant="light">
+                        SCHEDULE A CALL
+                    </ButtonDouble>
+                </Link>
                 <div className="my-4 flex flex-col w-full px-10">
                     <div className="overflow-clip h-fit">
                         <SlideInLetters
@@ -184,19 +173,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="w-[98%] rounded-xl bg-black/20 h-[80vh] mx-auto"></div>
-                <div className="my-4 flex flex-col w-full px-10">
-                    <div className="overflow-clip h-fit">
-                        <SlideInLetters
-                            str={`QUESTIONS`}
-                            className="text-[12vw] font-bigRiver"
-                        />
-                    </div>
-                    <div className="bg-white -translate-y-8 shadow-[0_0_0_1px] rounded-lg shadow-black/10 w-full flex flex-col px-10 py-1">
-                        {accordionData.map((acc, i) => (
-                            <Accordion key={i} {...acc} idx={i} />
-                        ))}
-                    </div>
-                </div>
+                <Questions />
             </section>
             <section className="flex flex-col items-center gap-10 px-10 py-20">
                 <div className="max-w-sm text-xl text-center">
@@ -204,54 +181,17 @@ export default function Home() {
                     skills and creativity needed to take your project to the
                     next level.
                 </div>
-                <ButtonDouble className="uppercase">SCHEDULE A CALL</ButtonDouble>
+
+                <Link href={"/contact"}>
+                    <ButtonDouble className="uppercase">
+                        SCHEDULE A CALL
+                    </ButtonDouble>
+                </Link>
             </section>
         </main>
     );
 }
-const SlideInLetters = ({
-    str,
-    className,
-}: {
-    str: string;
-    className?: string;
-}) => {
-    return (
-        <div
-            className={cn(
-                "flex flex-col items-center uppercase font-bold",
-                className
-            )}
-        >
-            {str.split("\n").map((line, i) => (
-                <span className="flex flex-row flex-wrap overflow-clip" key={i}>
-                    {line.split("").map((letter, index) => (
-                        // <div className="overflow-hidden" key={index}>
-                        <motion.span
-                            initial={{ y: "100%" }}
-                            key={index}
-                            className="leading-none"
-                            whileInView={{
-                                y: 0,
-                                transition: {
-                                    delay: index * 0.05 + (i * 0.5 + 0.1),
-                                    duration: 0.5,
-                                    ease: [0, 0, 0, 1],
-                                },
-                            }}
-                            viewport={{
-                                once: true,
-                            }}
-                        >
-                            {letter === " " ? <>&nbsp;</> : letter}
-                        </motion.span>
-                        // </div>
-                    ))}
-                </span>
-            ))}
-        </div>
-    );
-};
+
 const ExpLinks = ({
     text1,
     text2,
@@ -269,7 +209,7 @@ const ExpLinks = ({
             className="group grid grid-cols-2 w-full shadow-[0_-1px_0_0] last:shadow-[0_1px_0_0_#fff3,0_-1px_0_0_#fff3] shadow-white/20 items-center uppercase "
         >
             <span className="py-14 font-bold text-4xl">{text1}</span>
-            <span className="py-14 text-xs font-serif h-full flex flex-col justify-center">
+            <span className="py-14 text-xs font-helvetica h-full flex flex-col justify-center">
                 <div className="overflow-clip h-[1em]">
                     <span className="flex flex-col duration-300 translate-y-0 group-hover:-translate-y-1/2 transition-transform">
                         <span className="leading-none">{text2}</span>
@@ -278,82 +218,5 @@ const ExpLinks = ({
                 </div>
             </span>
         </Link>
-    );
-};
-
-const Accordion = ({
-    title,
-    details,
-    idx,
-}: {
-    title: string;
-    details: string;
-    idx: number;
-}) => {
-    const [open, setOpen] = useState(false);
-    return (
-        <div
-            className="flex flex-col items-stretch shadow-[0_1px_0_0] shadow-black/10 last:shadow-none cursor-pointer"
-            onClick={() => setOpen((init) => !init)}
-        >
-            <div className="group grid grid-cols-[5rem_1fr_auto] gap-4 py-14 justify-start items-center ">
-                <div className="overflow-clip h-[1em] opacity-80 text-sm">
-                    <span className="flex flex-col duration-300 translate-y-0 group-hover:-translate-y-1/2 transition-transform">
-                        <span className="leading-none">
-                            {(idx + 1).toString().padStart(3, "0")}
-                        </span>
-                        <span className="leading-none">
-                            {(idx + 1).toString().padStart(3, "0")}
-                        </span>
-                    </span>
-                </div>
-                <div className="text-xl">{title}</div>
-                <div
-                    className={cn(
-                        " w-10 aspect-square flex items-center justify-center transition-transform duration-300 rotate-0 group-hover:rotate-90"
-                    )}
-                >
-                    <motion.span
-                        variants={{
-                            open: {
-                                rotate: 135,
-                            },
-                            closed: {
-                                rotate: 0,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.2,
-                            ease: "linear",
-                        }}
-                        initial="closed"
-                        animate={open ? "open" : "closed"}
-                    >
-                        <Plus size={"1rem"} />
-                    </motion.span>
-                </div>
-            </div>
-            <motion.div
-                className="overflow-hidden"
-                variants={{
-                    open: {
-                        height: "auto",
-                    },
-                    closed: {
-                        height: 0,
-                    },
-                }}
-                initial="closed"
-                transition={{
-                    ease: [0, 0, 0, 1],
-                    duration: 0.6,
-                }}
-                animate={open ? "open" : "closed"}
-            >
-                <div className="bg-black  text-white rounded-lg p-10 mb-10">
-                    {details}
-                </div>
-            </motion.div>
-        </div>
     );
 };

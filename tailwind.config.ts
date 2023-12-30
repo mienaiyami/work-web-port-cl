@@ -14,12 +14,17 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
             colors: {
-                fg: "#000000",
-                bg: "#ffffff",
+                fg: "#ffffff",
+                bg: "#0b0c0f",
             },
             fontFamily: {
                 bigRiver: ["Big River", "sans-serif"],
                 satoshi: ["Satoshi-Variable", "sans-serif"],
+                helvetica: [
+                    // "Helvetica",
+                    '"Times New Roman"',
+                    "serif",
+                ],
             },
         },
     },

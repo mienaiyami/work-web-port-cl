@@ -4,6 +4,7 @@ import ButtonDouble from "./components/ButtonDouble";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const links = [
     {
@@ -15,8 +16,8 @@ const links = [
         text: "about",
     },
     {
-        href: "/projects",
-        text: "projects",
+        href: "/work",
+        text: "work",
     },
     {
         href: "/contact",
@@ -26,11 +27,20 @@ const links = [
 
 export default function NavBar() {
     const [open, setOpen] = useState(false);
+    const pathname = usePathname();
     return (
-        <nav className="flex flex-row fixed w-full h-14 uppercase p-10 z-50">
+        <nav
+            className={`flex flex-row w-full h-14 uppercase p-10 z-50 ${
+                pathname === "/work" ? "fixed" : "absolute"
+            }`}
+        >
             <Link href="/">Portfolio</Link>
             <div className="flex flex-row gap-4 ml-auto text-[0.7rem]">
-                <ButtonDouble>SCHEDULE A CALL</ButtonDouble>
+                <Link href={"/contact"}>
+                    <ButtonDouble className="uppercase">
+                        SCHEDULE A CALL
+                    </ButtonDouble>
+                </Link>
                 <motion.div
                     className="cursor-pointer ring-1 ring-[#2e313a] flex flex-col items-center justify-center h-[3em] aspect-square rounded-full"
                     variants={{
@@ -50,7 +60,7 @@ export default function NavBar() {
                 {open && (
                     <motion.div
                         key={"nav"}
-                        className="fixed w-full h-full inset-0"
+                        className="absolute w-full h-full inset-0"
                         variants={{
                             visible: { opacity: 1, pointerEvents: "auto" },
                             hidden: { opacity: 0, pointerEvents: "none" },
@@ -58,11 +68,9 @@ export default function NavBar() {
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
+                        onClick={() => setOpen(false)}
                     >
-                        <div
-                            className="fixed w-full h-full inset-0 bg-black/10 cursor-pointer"
-                            onClick={() => setOpen(false)}
-                        ></div>
+                        <div className="fixed w-full h-full inset-0 bg-black/20 cursor-pointer"></div>
                         <motion.div
                             className="overflow-clip flex flex-row items-stretch justify-stretch h-60 rounded-lg bg-white w-[96%] mx-auto top-24 relative text-black text-2xl py-4 font-bigRiver"
                             variants={{
@@ -150,9 +158,9 @@ const LinkItem = ({
                 animate="visible"
                 exit="hidden"
                 transition={{
-                    duration: 0.6,
+                    duration: 0.5,
                     ease: [0, 0, 0, 1],
-                    delay: 0.23 + idx * 0.1,
+                    delay: 0.21 + idx * 0.1,
                 }}
             >
                 <span className="flex flex-row duration-200 -translate-x-full group-hover:translate-x-0 transition-transform text-sm ease-out">
