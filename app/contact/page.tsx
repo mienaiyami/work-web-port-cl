@@ -15,14 +15,14 @@ const Work = () => {
     );
     return (
         <main className="flex flex-col min-h-screen">
-            <section className="grid place-items-center w-full min-h-[95vh]">
+            <section className="grid place-items-center w-full min-h-[95vh] md:py-28">
                 <div className="absolute w-full inset-0 top-[40vh] -translate-y-1/2 text-[20vw] uppercase font-bigRiver z-0">
                     <LoopStripe>Contact Me</LoopStripe>
                 </div>
-                <div className="rounded-lg p-10 flex flex-col justify-between items-center bg-white text-black z-10 my-20">
+                <div className="relative mt-[30vh] md:mt-0 mx-2 rounded-lg p-10 flex flex-col justify-between items-center bg-white text-black z-10 my-20">
                     {submitStatus != "submitted" ? (
                         <>
-                            <span className="py-16 text-xl w-full max-w-[25rem] text-center">
+                            <span className="py-6 md:py-16 text-xl w-full max-w-[25rem] text-center">
                                 Please fill out the form below and I will be in
                                 touch within 24 hours.
                             </span>
@@ -38,7 +38,7 @@ const Work = () => {
                             >
                                 <label className="flex flex-col gap-1">
                                     Your Name
-                                    <div className="flex flex-row gap-2 w-full">
+                                    <div className="flex flex-col md:flex-row gap-2 w-full">
                                         <input
                                             type="text"
                                             placeholder="First Name"
@@ -88,15 +88,15 @@ const Work = () => {
                     )}
                 </div>
             </section>
-            <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
-                <div className="relative -translate-y-10 mx-auto h-20">
+            <section className="w-auto mx-2 md:mx-5 rounded-xl flex flex-col items-center gap-0 md:gap-10 bg-white text-black relative">
+                <div className="relative -translate-y-[50%] mx-auto h-18 md:h-20">
                     <img className="" src="/curve.svg" />
                     <ButtonDouble
                         className="mx-auto -translate-y-8"
                         variant="light"
                         asIcon
                     >
-                        <Link href="#intro">
+                        <Link href="#questions">
                             <ArrowDown size={"0.9rem"} />
                         </Link>
                     </ButtonDouble>

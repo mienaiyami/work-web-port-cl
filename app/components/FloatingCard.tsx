@@ -5,9 +5,11 @@ import { cn } from "../utils";
 const FloatingCard = ({
     img,
     width = "w-[22%]",
+    followMouse = true,
 }: {
     img: string;
     width?: string;
+    followMouse?: boolean;
 }) => {
     const rotateY = useMotionValue(0);
     const rotateX = useMotionValue(0);
@@ -15,6 +17,7 @@ const FloatingCard = ({
 
     useLayoutEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
+            if (window.innerWidth < 768) return;
             const ry = (e.clientX - window.innerWidth / 2) / 30;
             const rx = -(e.clientY - window.innerHeight / 2) / 50;
             const ty = (e.clientY - window.innerHeight / 2) / 5;
@@ -22,9 +25,10 @@ const FloatingCard = ({
             rotateX.set(rx);
             translateY.set(ty);
         };
-        window.addEventListener("mousemove", handleMouseMove);
+        if (followMouse) window.addEventListener("mousemove", handleMouseMove);
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+            if (followMouse)
+                window.removeEventListener("mousemove", handleMouseMove);
         };
     }, []);
 
@@ -62,7 +66,7 @@ const FloatingCard = ({
                 >
                     <img
                         src={img}
-                        className="rounded-xl w-full h-full object-cover"
+                        className="rounded md:rounded-xl w-full h-full"
                     />
                 </motion.div>
             </motion.div>

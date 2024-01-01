@@ -43,7 +43,7 @@ const timeline = [
 export default function About() {
     return (
         <main className="flex flex-col min-h-screen">
-            <section className="grid w-full h-[95vh] justify-start">
+            <section className="grid w-full h-[50vh] md:h-[95vh] justify-start mb-10 md:pb-0">
                 <div className="absolute w-full inset-0 top-[40vh] -translate-y-1/2 text-[20vw] uppercase font-bigRiver z-0">
                     <LoopStripe>About Me</LoopStripe>
                 </div>
@@ -60,7 +60,7 @@ export default function About() {
                 </div>
 
                 <motion.div
-                    className="grid place-items-center absolute top-0 right-20 w-[50vh] min-w-96 h-full pointer-events-none"
+                    className="hidden md:grid place-items-center absolute top-0 right-20 w-[50vh] min-w-96 h-full pointer-events-none"
                     initial={{
                         translateY: "100%",
                         rotateY: "-180deg",
@@ -83,8 +83,8 @@ export default function About() {
                     <FloatingCard img="/placeholder.svg" width="w-full" />
                 </motion.div>
             </section>
-            <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
-                <div className="relative -translate-y-10 mx-auto mr-48 h-20">
+            <section className="w-auto mx-2 md:mx-5 rounded-xl flex flex-col items-center gap-5 md:gap-10 bg-white text-black relative">
+                <div className="relative -translate-y-[50%] mx-auto h-18 md:h-20 md:mr-48">
                     <img className="" src="/curve.svg" />
                     <Link href="#about">
                         <ButtonDouble
@@ -117,29 +117,37 @@ export default function About() {
                             className="text-[12vw] font-bigRiver"
                         />
                     </div>
-                    <span className="-translate-y-8 w-full h-20 bg-white shadow-[0_-1px_0_0] shadow-black/10"></span>
+                    <span className="-translate-y-[2vw] w-full h-20 bg-white shadow-[0_-1px_0_0] shadow-black/10"></span>
                 </div>
-                <div className="-translate-y-8 flex flex-col px-10 items-stretch gap-5 w-full">
-                    <div className="grid grid-cols-2 w-full items-stretch">
-                        <div className="bg-bg w-full rounded-xl relative">
+                <div className="-translate-y-8 flex flex-col px-6 md:px-10 items-stretch gap-5 w-full">
+                    <motion.div
+                        className="flex flex-col md:flex-row items-stretch"
+                        initial="hidden"
+                        animate="hidden"
+                        whileInView="view"
+                        viewport={{
+                            once: true,
+                            amount: 0.5,
+                        }}
+                    >
+                        <div className="bg-bg w-full aspect-square md:aspect-auto md:w-1/2 h-auto rounded-xl relative overflow-clip">
                             <motion.div
-                                className="grid place-items-center absolute inset-0 h-full pointer-events-none"
-                                initial={{
-                                    translateY: "100%",
-                                    rotateY: "-180deg",
-                                    rotateZ: "35deg",
-                                    scale: 0.7,
-                                    opacity: 0,
-                                }}
-                                whileInView={{
-                                    translateY: 0,
-                                    rotateY: 0,
-                                    rotateZ: 0,
-                                    scale: 1,
-                                    opacity: 1,
-                                }}
-                                viewport={{
-                                    amount: 0,
+                                className="grid place-items-center absolute inset-0 pointer-events-none"
+                                variants={{
+                                    view: {
+                                        translateY: 0,
+                                        rotateY: 0,
+                                        rotateZ: 0,
+                                        scale: 1,
+                                        opacity: 1,
+                                    },
+                                    hidden: {
+                                        translateY: "100%",
+                                        rotateY: "-180deg",
+                                        rotateZ: "35deg",
+                                        scale: 0.7,
+                                        opacity: 0,
+                                    },
                                 }}
                                 transition={{
                                     duration: 0.7,
@@ -148,21 +156,22 @@ export default function About() {
                             >
                                 <FloatingCard
                                     img="/placeholder.svg"
-                                    width="w-full"
+                                    width="w-[40%] md:w-full"
+                                    followMouse={false}
                                 />
                             </motion.div>
                         </div>
-                        <div className="flex flex-col py-10 px-20 gap-10 max-w-xl">
+                        <div className=" w-full md:w-1/2 flex flex-col py-10 px-0 md:px-20 gap-4 md:gap-10 max-w-xl">
                             <div className="flex flex-row items-center justify-start gap-5">
                                 <span className="w-2 h-2 rounded-full border border-[#c3dde0]"></span>
                                 <div className="font-helvetica text-xs uppercase">
                                     ABOUT ME
                                 </div>
                             </div>
-                            <div className="text-6xl leading-snug">
+                            <div className="text-3xl md:text-6xl md:leading-snug">
                                 Lorem ipsum dolor sit amet, consectetur
                             </div>
-                            <div className="text-xl pb-10">
+                            <div className="text-base md:text-xl md:pb-10">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Fugit illo, incidunt fugiat
                                 labore voluptates quasi, obcaecati quis
@@ -179,9 +188,9 @@ export default function About() {
                                 doloremque debitis.
                             </div>
                         </div>
-                    </div>
-                    <div className="grid grid-cols-2 items-stretch mb-20">
-                        <div className="bg-bg w-full rounded-xl h-[calc(100vh_-_1rem)] sticky top-10">
+                    </motion.div>
+                    <div className="flex flex-col md:flex-row items-stretch gap-10 md:gap-0 md:mb-20">
+                        <div className="bg-bg rounded-xl aspect-square md:aspect-auto md:h-[calc(100vh_-_1rem)] relative md:sticky top-10 overflow-clip w-full md:w-1/2">
                             <motion.div
                                 className="grid place-items-center absolute inset-0 h-full pointer-events-none"
                                 initial={{
@@ -194,19 +203,20 @@ export default function About() {
                             >
                                 <FloatingCard
                                     img="/placeholder.svg"
-                                    width="w-full"
+                                    width="w-[40%] md:w-full"
+                                    followMouse={false}
                                 />
                             </motion.div>
                         </div>
-                        <div className="flex flex-col pl-20 pr-10">
-                            <div className="flex flex-col py-10 pb-20 gap-6 max-w-xl">
+                        <div className="flex flex-col md:pl-20 md:pr-10 w-full md:w-1/2">
+                            <div className="flex flex-col py-10 md:pb-20 gap-6 max-w-xl">
                                 <div className="flex flex-row items-center justify-start gap-5">
                                     <span className="w-2 h-2 rounded-full border border-[#c3dde0]"></span>
                                     <div className="font-helvetica text-xs uppercase">
                                         MY TIMELINE
                                     </div>
                                 </div>
-                                <div className="text-6xl leading-snug">
+                                <div className="text-3xl md:text-6xl md:leading-snug">
                                     Lorem ipsum dolor sit amet
                                 </div>
                             </div>
@@ -251,15 +261,19 @@ const TimelineItem = ({
 }) => {
     return (
         <div className="w-full shadow-black/10 shadow-[inset_0_1px_0_0] sticky top-20 bg-white">
-            <div className="max-w-xl flex flex-col py-24 gap-6">
+            <div className="max-w-xl flex flex-col py-14 gap-2 md:py-24 md:gap-6">
                 <div className="flex flex-row items-center justify-start gap-5">
                     <span className="w-2 h-2 rounded-full border border-[#c3dde0]"></span>
                     <div className="font-helvetica text-xs uppercase">
                         {date}
                     </div>
                 </div>
-                <div className="text-6xl font-bigRiver">{title}</div>
-                <div className="text-xl pb-10">{description}</div>
+                <div className="text-3xl md:text-6xl font-bigRiver">
+                    {title}
+                </div>
+                <div className="text-base md:text-xl md:pb-10">
+                    {description}
+                </div>
             </div>
         </div>
     );

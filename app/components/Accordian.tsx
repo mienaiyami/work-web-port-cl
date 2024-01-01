@@ -19,8 +19,8 @@ const Accordion = ({
             className="flex flex-col items-stretch shadow-[0_1px_0_0] shadow-black/10 last:shadow-none cursor-pointer"
             onClick={() => setOpen((init) => !init)}
         >
-            <div className="group grid grid-cols-[5rem_1fr_auto] gap-4 py-14 justify-start items-center ">
-                <div className="overflow-clip h-[1em] opacity-80 text-sm">
+            <div className="group flex flex-col md:flex-row gap-4 py-4 md:py-14 justify-start items-start md:items-center ">
+                <div className="overflow-clip h-[1em] opacity-80 text-sm w-[5rem]">
                     <span className="flex flex-col duration-300 translate-y-0 group-hover:-translate-y-1/2 transition-transform">
                         <span className="leading-none">
                             {(idx + 1).toString().padStart(3, "0")}
@@ -30,30 +30,32 @@ const Accordion = ({
                         </span>
                     </span>
                 </div>
-                <div className="text-xl">{title}</div>
-                <div
-                    className={cn(
-                        " w-10 aspect-square flex items-center justify-center transition-transform duration-300 rotate-0 group-hover:rotate-90"
-                    )}
-                >
-                    <motion.span
-                        variants={{
-                            open: {
-                                rotate: 135,
-                            },
-                            closed: {
-                                rotate: 0,
-                            },
-                        }}
-                        transition={{
-                            duration: 0.2,
-                            ease: "linear",
-                        }}
-                        initial="closed"
-                        animate={open ? "open" : "closed"}
+                <div className="grid grid-cols-[1fr_auto] items-center w-full">
+                    <div className="text-xl">{title}</div>
+                    <div
+                        className={cn(
+                            " w-10 aspect-square flex items-center justify-center transition-transform duration-300 rotate-0 group-hover:rotate-90"
+                        )}
                     >
-                        <Plus size={"1rem"} />
-                    </motion.span>
+                        <motion.span
+                            variants={{
+                                open: {
+                                    rotate: 135,
+                                },
+                                closed: {
+                                    rotate: 0,
+                                },
+                            }}
+                            transition={{
+                                duration: 0.2,
+                                ease: "linear",
+                            }}
+                            initial="closed"
+                            animate={open ? "open" : "closed"}
+                        >
+                            <Plus size={"1rem"} />
+                        </motion.span>
+                    </div>
                 </div>
             </div>
             <motion.div

@@ -30,13 +30,13 @@ export default function NavBar() {
     const pathname = usePathname();
     return (
         <nav
-            className={`flex flex-row w-full h-14 uppercase p-10 z-50 ${
-                pathname === "/work" ? "fixed" : "absolute"
+            className={`flex flex-row w-full items-center uppercase p-10 z-50 ${
+                pathname === "/work" ? "absolute md:fixed" : "absolute"
             }`}
         >
             <Link href="/">Portfolio</Link>
             <div className="flex flex-row gap-4 ml-auto text-[0.7rem]">
-                <Link href={"/contact"}>
+                <Link href={"/contact"} className="hidden md:flex">
                     <ButtonDouble className="uppercase">
                         SCHEDULE A CALL
                     </ButtonDouble>
@@ -72,7 +72,7 @@ export default function NavBar() {
                     >
                         <div className="fixed w-full h-full inset-0 bg-black/20 cursor-pointer"></div>
                         <motion.div
-                            className="overflow-clip flex flex-row items-stretch justify-stretch h-60 rounded-lg bg-white w-[96%] mx-auto top-24 relative text-black text-2xl py-4 font-bigRiver"
+                            className="overflow-clip flex flex-col md:flex-row items-stretch justify-stretch h-60 rounded-lg bg-white w-[90%] md:w-[96%] mx-auto top-24 relative text-black md:text-2xl md:py-4 font-bigRiver"
                             variants={{
                                 visible: {
                                     height: "15rem",
@@ -118,7 +118,7 @@ const LinkItem = ({
     return (
         <Link
             href={href}
-            className="group grid grid-cols-[1fr_auto] px-8 w-full items-end shadow-[2px_0_0_0] shadow-black/5 last:shadow-none"
+            className="overflow-clip md:overflow-visible group grid grid-cols-[1fr_auto] py-4 md:py-0 px-8 w-full items-end shadow-[0_2px_0_0] md:shadow-[2px_0_0_0] shadow-black/5 md:shadow-black/5 last:shadow-none"
         >
             <motion.span
                 variants={{

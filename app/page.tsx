@@ -31,7 +31,7 @@ const servicesData = [
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col">
-            <section className="grid place-items-center w-full h-[95vh]">
+            <section className="grid place-items-center w-full h-[60vh] md:h-[95vh] relative">
                 <div className="flex items-stretch">
                     <SlideInLetters
                         str={`Placeholder\nname`}
@@ -62,8 +62,8 @@ export default function Home() {
                     <FloatingCard img="placeholder.svg" />
                 </motion.div>
             </section>
-            <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
-                <div className="relative -translate-y-10 mx-auto h-20">
+            <section className="w-auto mx-2 md:mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
+                <div className="relative -translate-y-[50%] mx-auto h-18 md:h-20">
                     <img className="" src="/curve.svg" />
                     <Link href="#intro">
                         <ButtonDouble
@@ -76,7 +76,7 @@ export default function Home() {
                     </Link>
                 </div>
                 <div
-                    className="text-5xl max-w-3xl text-center mx-auto scroll-mt-20"
+                    className="text-3xl md:text-5xl max-w-3xl text-center mx-auto scroll-mt-20"
                     id="intro"
                 >
                     With years of experience in the industry, I have worked with
@@ -97,7 +97,7 @@ export default function Home() {
                             className="text-[12vw] font-bigRiver"
                         />
                     </div>
-                    <span className="-translate-y-8 w-full h-20 bg-white shadow-[0_-1px_0_0] shadow-black/10"></span>
+                    <span className="-translate-y-[2vw] w-full h-[10vw] bg-white shadow-[0_-1px_0_0] shadow-black/10"></span>
                 </div>
             </section>
             <section className="flex flex-col items-center gap-10 px-10 py-20">
@@ -143,8 +143,8 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
-                <div className="relative -translate-y-10 mx-auto h-20">
+            <section className="w-auto mx-2 md:mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
+                <div className="relative -translate-y-[50%] mx-auto h-18 md:h-20">
                     <img className="" src="/curve.svg" />
 
                     <Link href={"#services"}>
@@ -178,10 +178,10 @@ export default function Home() {
                             className="text-[12vw] font-bigRiver"
                         />
                     </div>
-                    <div className="bg-white pt-10 -translate-y-8 shadow-[0_-1px_0_0] shadow-black/10 w-full flex flex-col md:flex-row">
+                    <div className="bg-white pt-10 -translate-y-[2vw] shadow-[0_-1px_0_0] shadow-black/10 w-full flex flex-col md:flex-row">
                         {servicesData.map((service, i) => (
                             <div
-                                className="flex flex-col items-start px-10 border-r-[1px] border-black/10 border-dotted last:border-0"
+                                className="flex flex-col items-start py-10 md:py-0 md:px-10 border-b-[1px] md:border-b-0 md:border-r-[1px] border-black/10 border-dotted last:border-0"
                                 key={i}
                             >
                                 <div className="text-xs mb-10 opacity-80">

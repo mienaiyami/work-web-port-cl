@@ -46,13 +46,13 @@ const cardData = [
 export default function Work() {
     return (
         <main className="flex min-h-screen flex-col overflow-x-clip">
-            <section className="grid grid-cols-2 w-full h-screen gap-10">
-                <div className="flex p-10 z-0">
-                    <div className="fixed w-screen inset-0 text-[20vw] uppercase font-bigRiver">
+            <section className="flex flex-col md:flex-row w-full items-center min-h-[100vh] gap-10">
+                <div className="grid w-full h-[50vh] md:p-10 z-0 md:h-auto justify-start relative">
+                    <div className="absolute  -translate-y-1/2 md:translate-y-0 md:fixed md:w-screen inset-0 top-[20vh] text-[20vw] uppercase font-bigRiver">
                         <LoopStripe>Projects</LoopStripe>
                     </div>
-                    <div className="flex flex-col gap-5 items-start fixed bottom-6">
-                        <span className="text-2xl max-w-sm">
+                    <div className="flex flex-col max-w-80 gap-5 items-start place-self-end md:place-self-auto md:fixed md:bottom-6 m-10">
+                        <span className="text-xl">
                             As a designer, I help companies to achieve their
                             desired goals.
                         </span>
@@ -64,19 +64,19 @@ export default function Work() {
                         </Link>
                     </div>
                 </div>
-                <div className="flex flex-col p-10 pt-0 text-black z-10">
-                    <span className="sticky top-0 h-28 w-full bg-bg"></span>
-                    <div className="sticky top-28 rounded-t-xl font-helvetica py-5 bg-white  text-xs shadow-[inset_0_-1px_0_0] shadow-black/10">
+                <div className="flex flex-col px-2 md:p-10 py-0 text-black z-10 w-full">
+                    <span className="sticky top-0 h-0 md:h-28 w-full bg-bg"></span>
+                    <div className="sticky top-0 md:top-28 rounded-t-xl font-helvetica py-5 bg-white  text-xs shadow-[inset_0_-1px_0_0] shadow-black/10">
                         <span className="ml-10">ALL PROJECTS</span>
                     </div>
-                    <div className="p-10 grid text-2xl  place-items-center text-center bg-white ">
+                    <div className="p-4 md:p-10 grid text-xl md:text-2xl  place-items-center text-center bg-white ">
                         <div className="max-w-80 py-6">
                             My aim is to help my clients maximize their
                             potential.
                         </div>
                     </div>
                     <div className="bg-bg">
-                        <div className="flex flex-col gap-6 items-stretch px-10 w-full bg-white rounded-b-xl py-5">
+                        <div className="flex flex-col gap-6 items-stretch px-4 md:px-10 w-full bg-white rounded-b-xl py-5">
                             {cardData.map((card, i) => (
                                 <Card
                                     text1={card.text1}
@@ -88,7 +88,7 @@ export default function Work() {
                             ))}
                         </div>
                     </div>
-                    <span className="h-8 w-full top-auto bottom-0 sticky bg-bg z-20"></span>
+                    <span className="h-0 md:h-8 w-full top-auto bottom-0 sticky bg-bg z-20"></span>
                 </div>
             </section>
         </main>

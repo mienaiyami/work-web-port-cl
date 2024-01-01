@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "../utils";
 import Accordion from "./Accordian";
 import SlideInLetters from "./SlideInLetters";
 
@@ -30,16 +31,21 @@ const accordionData = [
     },
 ];
 
-const Questions = () => {
+const Questions = ({ className }: { className?: string }) => {
     return (
-        <div className="my-4 flex flex-col w-full px-14 ">
+        <div
+            className={cn(
+                "my-4 flex flex-col w-full px-4 md:px-14 ",
+                className
+            )}
+        >
             <div className="overflow-clip h-fit">
                 <SlideInLetters
                     str={`QUESTIONS`}
                     className="text-[12vw] font-bigRiver"
                 />
             </div>
-            <div className="bg-white -translate-y-8 shadow-[0_0_0_1px] rounded-lg shadow-black/10 w-full flex flex-col px-10 py-1">
+            <div className="bg-white -translate-y-[2vw] shadow-[0_0_0_1px] rounded-lg shadow-black/10 w-full flex flex-col px-4 md:px-10 py-1">
                 {accordionData.map((acc, i) => (
                     <Accordion key={i} {...acc} idx={i} />
                 ))}
