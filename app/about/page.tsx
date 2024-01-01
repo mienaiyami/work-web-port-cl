@@ -4,6 +4,8 @@ import ButtonDouble from "../components/ButtonDouble";
 import LoopStripe from "../components/LoopStripe";
 import Link from "next/link";
 import SlideInLetters from "../components/SlideInLetters";
+import { motion } from "framer-motion";
+import FloatingCard from "../components/FloatingCard";
 
 const timeline = [
     {
@@ -56,6 +58,30 @@ export default function About() {
                         </ButtonDouble>
                     </Link>
                 </div>
+
+                <motion.div
+                    className="grid place-items-center absolute top-0 right-20 w-[50vh] min-w-96 h-full pointer-events-none"
+                    initial={{
+                        translateY: "100%",
+                        rotateY: "-180deg",
+                        rotateZ: "35deg",
+                        scale: 0.7,
+                        opacity: 0,
+                    }}
+                    animate={{
+                        translateY: 0,
+                        rotateY: 0,
+                        rotateZ: 0,
+                        scale: 1,
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 0.7,
+                        ease: "easeInOut",
+                    }}
+                >
+                    <FloatingCard img="/placeholder.svg" width="w-full" />
+                </motion.div>
             </section>
             <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
                 <div className="relative -translate-y-10 mx-auto mr-48 h-20">
@@ -95,7 +121,37 @@ export default function About() {
                 </div>
                 <div className="-translate-y-8 flex flex-col px-10 items-stretch gap-5 w-full">
                     <div className="grid grid-cols-2 w-full items-stretch">
-                        <div className="bg-bg w-full rounded-xl"></div>
+                        <div className="bg-bg w-full rounded-xl relative">
+                            <motion.div
+                                className="grid place-items-center absolute inset-0 h-full pointer-events-none"
+                                initial={{
+                                    translateY: "100%",
+                                    rotateY: "-180deg",
+                                    rotateZ: "35deg",
+                                    scale: 0.7,
+                                    opacity: 0,
+                                }}
+                                whileInView={{
+                                    translateY: 0,
+                                    rotateY: 0,
+                                    rotateZ: 0,
+                                    scale: 1,
+                                    opacity: 1,
+                                }}
+                                viewport={{
+                                    amount: 0,
+                                }}
+                                transition={{
+                                    duration: 0.7,
+                                    ease: "easeInOut",
+                                }}
+                            >
+                                <FloatingCard
+                                    img="/placeholder.svg"
+                                    width="w-full"
+                                />
+                            </motion.div>
+                        </div>
                         <div className="flex flex-col py-10 px-20 gap-10 max-w-xl">
                             <div className="flex flex-row items-center justify-start gap-5">
                                 <span className="w-2 h-2 rounded-full border border-[#c3dde0]"></span>
@@ -125,7 +181,23 @@ export default function About() {
                         </div>
                     </div>
                     <div className="grid grid-cols-2 items-stretch mb-20">
-                        <div className="bg-bg w-full rounded-xl h-[calc(100vh_-_1rem)] sticky top-10"></div>
+                        <div className="bg-bg w-full rounded-xl h-[calc(100vh_-_1rem)] sticky top-10">
+                            <motion.div
+                                className="grid place-items-center absolute inset-0 h-full pointer-events-none"
+                                initial={{
+                                    translateY: 0,
+                                    rotateY: 0,
+                                    rotateZ: 0,
+                                    scale: 1,
+                                    opacity: 1,
+                                }}
+                            >
+                                <FloatingCard
+                                    img="/placeholder.svg"
+                                    width="w-full"
+                                />
+                            </motion.div>
+                        </div>
                         <div className="flex flex-col pl-20 pr-10">
                             <div className="flex flex-col py-10 pb-20 gap-6 max-w-xl">
                                 <div className="flex flex-row items-center justify-start gap-5">
