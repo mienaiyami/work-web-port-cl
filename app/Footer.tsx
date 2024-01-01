@@ -13,9 +13,9 @@ const Footer = () => {
                 <span className="justify-self-start">© 2023 placeholder</span>
                 <span className="flex flex-row gap-10 items-center">
                     <Link href="/">Home</Link>
-                    <Link href="about">about</Link>
-                    <Link href="projects">projects</Link>
-                    <Link href="contact">contact</Link>
+                    <Link href="/about">about</Link>
+                    <Link href="/work">projects</Link>
+                    <Link href="/contact">contact</Link>
                 </span>
                 <span className="justify-self-end">CREATED BY ...</span>
             </div>

@@ -14,7 +14,7 @@ const ButtonDouble = ({
     return (
         <button
             className={cn(
-                "grid h-[3em] place-items-center rounded-full ring-1 group text-xs",
+                "grid h-[3em] place-items-center rounded-full ring-1 group text-xs font-semibold",
                 className,
                 variant === "dark" ? "ring-[#2e313a]" : "ring-[#e7eeee]",
                 asIcon ? "aspect-square" : "px-5"

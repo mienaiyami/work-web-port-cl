@@ -50,23 +50,25 @@ export default function About() {
                         With years of experience in the industry, I have worked
                         with businesses of all sizes.
                     </span>
-                    <ButtonDouble className="uppercase">
-                        <Link href="/work">View My Projects</Link>
-                    </ButtonDouble>
+                    <Link href="/work">
+                        <ButtonDouble className="uppercase">
+                            View My Projects
+                        </ButtonDouble>
+                    </Link>
                 </div>
             </section>
             <section className="w-auto mx-5 rounded-xl flex flex-col items-center gap-10 bg-white text-black relative">
                 <div className="relative -translate-y-10 mx-auto mr-48 h-20">
                     <img className="" src="/curve.svg" />
-                    <ButtonDouble
-                        className="mx-auto -translate-y-8"
-                        variant="light"
-                        asIcon
-                    >
-                        <Link href="#about">
+                    <Link href="#about">
+                        <ButtonDouble
+                            className="mx-auto -translate-y-8"
+                            variant="light"
+                            asIcon
+                        >
                             <ArrowDown size={"0.9rem"} />
-                        </Link>
-                    </ButtonDouble>
+                        </ButtonDouble>
+                    </Link>
                 </div>
                 <div
                     className="text-2xl max-w-lg text-center mx-auto scroll-mt-20"
