@@ -15,11 +15,11 @@ const Work = () => {
     );
     return (
         <main className="flex flex-col min-h-screen">
-            <section className="grid place-items-center w-full h-[95vh]">
+            <section className="grid place-items-center w-full min-h-[95vh]">
                 <div className="absolute w-full inset-0 top-[40vh] -translate-y-1/2 text-[20vw] uppercase font-bigRiver z-0">
                     <LoopStripe>Contact Me</LoopStripe>
                 </div>
-                <div className="rounded-lg p-10 flex flex-col justify-between items-center bg-white text-black z-10">
+                <div className="rounded-lg p-10 flex flex-col justify-between items-center bg-white text-black z-10 my-20">
                     {submitStatus != "submitted" ? (
                         <>
                             <span className="py-16 text-xl w-full max-w-[25rem] text-center">
