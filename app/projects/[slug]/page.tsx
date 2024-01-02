@@ -53,8 +53,9 @@ export default function Project({
                     {projectData[params.slug].description}
                 </span>
             </section>
-            <section className="w-auto mx-5 rounded-xl flex flex-col items-stretch gap-10 bg-white text-black relative">
-                <div className="relative -translate-y-10 mx-auto h-20 ">
+
+            <section className="w-auto mx-2 md:mx-5 rounded-xl flex flex-col items-center bg-white text-black relative">
+                <div className="relative -translate-y-[50%] mx-auto h-18 md:h-20">
                     <img className="" src="/curve.svg" />
                     <Link href="#main">
                         <ButtonDouble
@@ -66,8 +67,11 @@ export default function Project({
                         </ButtonDouble>
                     </Link>
                 </div>
-                <div className="p-14 flex flex-col gap-10 items-start">
-                    <div className="w-full flex flex-row justify-between items-center font-helvetica text-xs py-10 shadow-[0_1px_0_0] shadow-black/10">
+                <div
+                    className="px-4 pb-4 md:p-14 flex flex-col gap-4 md:gap-10 items-start w-full"
+                    id="main"
+                >
+                    <div className="w-full flex flex-col md:flex-row gap-5 md:gap-0 justify-between tracking-widest uppercase items-start md:items-center font-helvetica text-xs pb-6 md:py-10 shadow-[0_1px_0_0] shadow-black/10">
                         <span>{projectData[params.slug].name}</span>
                         <span>{projectData[params.slug].date}</span>
                         <Link
@@ -89,7 +93,7 @@ export default function Project({
                     </div>
                     {projectData[params.slug].images.map((image, i) => (
                         <div
-                            className="w-full h-[80vh] bg-black rounded-xl p-10 grid place-items-center"
+                            className="w-full md:h-[80vh] bg-black rounded-xl p-10 grid place-items-center"
                             key={i}
                         >
                             <img
