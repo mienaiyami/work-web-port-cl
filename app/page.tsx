@@ -129,7 +129,7 @@ export default function Home() {
                     </Link>
                 </div>
                 <div
-                    className="text-3xl md:text-5xl max-w-3xl text-center mx-auto scroll-mt-20"
+                    className="text-3xl px-4 md:px-0 md:text-5xl max-w-3xl text-center mx-auto scroll-mt-20"
                     id="intro"
                 >
                     With years of experience in the industry, I have worked with

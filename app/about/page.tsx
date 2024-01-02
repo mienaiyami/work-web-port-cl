@@ -97,7 +97,7 @@ export default function About() {
                     </Link>
                 </div>
                 <div
-                    className="text-2xl max-w-lg text-center mx-auto scroll-mt-20"
+                    className="px-4 md:px-0 text-xl md:text-2xl max-w-lg text-center mx-auto scroll-mt-20"
                     id="about"
                 >
                     I have worked with businesses of all sizes to create

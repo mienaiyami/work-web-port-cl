@@ -101,6 +101,7 @@ const Work = () => {
                         </Link>
                     </ButtonDouble>
                 </div>
+                <span id="questions" className="h-0 w-full"></span>
                 <Questions />
             </section>
             <section className="flex flex-col items-center gap-10 px-10 py-20">

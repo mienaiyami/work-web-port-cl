@@ -48,7 +48,7 @@ export default function Work() {
         <main className="flex min-h-screen flex-col overflow-x-clip">
             <section className="flex flex-col md:flex-row w-full items-center min-h-[100vh] gap-10">
                 <div className="grid w-full h-[50vh] md:p-10 z-0 md:h-auto justify-start relative">
-                    <div className="absolute  -translate-y-1/2 md:translate-y-0 md:fixed md:w-screen inset-0 top-[20vh] text-[20vw] uppercase font-bigRiver">
+                    <div className="absolute  -translate-y-1/2 md:translate-y-0 md:fixed md:w-screen inset-0 top-[25vh] text-[20vw] uppercase font-bigRiver">
                         <LoopStripe>Projects</LoopStripe>
                     </div>
                     <div className="flex flex-col max-w-80 gap-5 items-start place-self-end md:place-self-auto md:fixed md:bottom-6 m-10">
@@ -76,7 +76,7 @@ export default function Work() {
                         </div>
                     </div>
                     <div className="bg-bg">
-                        <div className="flex flex-col gap-6 items-stretch px-4 md:px-10 w-full bg-white rounded-b-xl py-5">
+                        <div className="flex flex-col gap-6 items-stretch px-4 md:px-10 w-full bg-white rounded-b-xl py-5 mb-2 md:mb-0">
                             {cardData.map((card, i) => (
                                 <Card
                                     text1={card.text1}
