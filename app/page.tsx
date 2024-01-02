@@ -1,10 +1,19 @@
 "use client";
 import Image from "next/image";
-import { motion, motionValue, useMotionValue } from "framer-motion";
+import {
+    AnimatePresence,
+    motion,
+    motionValue,
+    useMotionTemplate,
+    useMotionValue,
+    useMotionValueEvent,
+    useTransform,
+    wrap,
+} from "framer-motion";
 import { cn } from "./utils";
 import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
-import { ArrowDown, Plus } from "lucide-react";
+import { ArrowDown, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import ButtonDouble from "./components/ButtonDouble";
 import Questions from "./components/Questions";
 import SlideInLetters from "./components/SlideInLetters";
@@ -24,6 +33,50 @@ const servicesData = [
     {
         title: "Web Design",
         desc: "This includes creating unique designs that reflect a company's identity and goals, while also taking into account various aspects of page design such as user experience, usability, navigation, content organization and presentation.",
+        img: "/placeholder.svg",
+    },
+];
+
+const carouselData: {
+    name: string;
+    review: string;
+    avatar: string;
+    project: string;
+    img: string;
+}[] = [
+    {
+        name: "Name",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        avatar: "/placeholder.svg",
+        project: "Project Name",
+        img: "/placeholder.svg",
+    },
+    {
+        name: "Name",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        avatar: "/placeholder.svg",
+        project: "Project Name",
+        img: "/placeholder.svg",
+    },
+    {
+        name: "Name",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        avatar: "/placeholder.svg",
+        project: "Project Name",
+        img: "/placeholder.svg",
+    },
+    {
+        name: "Name",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        avatar: "/placeholder.svg",
+        project: "Project Name",
+        img: "/placeholder.svg",
+    },
+    {
+        name: "Name",
+        review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        avatar: "/placeholder.svg",
+        project: "Project Name",
         img: "/placeholder.svg",
     },
 ];
@@ -100,7 +153,7 @@ export default function Home() {
                     <span className="-translate-y-[2vw] w-full h-[10vw] bg-white shadow-[0_-1px_0_0] shadow-black/10"></span>
                 </div>
             </section>
-            <section className="flex flex-col items-center gap-10 px-10 py-20">
+            <section className="flex flex-col items-center gap-10 px-4 md:px-10 py-20">
                 <div className="max-w-sm text-xl text-center">
                     I have worked with businesses of all sizes to create
                     stunning websites and designs that capture their
@@ -203,7 +256,7 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
-                <div className="w-[98%] rounded-xl bg-black/20 h-[80vh] mx-auto"></div>
+                <Carousel />
                 <Questions />
             </section>
             <section className="flex flex-col items-center gap-10 px-10 py-20">
@@ -255,10 +308,17 @@ const ExpLinks = ({
             whileHover={"hover"}
             animate={"rest"}
             href={url}
-            className="relative group py-16 grid grid-cols-2 w-full shadow-[0_-1px_0_0] last:shadow-[0_1px_0_0_#fff3,0_-1px_0_0_#fff3] shadow-white/20 items-center uppercase "
+            className="relative group py-6 md:py-16 flex flex-col md:flex-row gap-4 md:gap-0 w-full shadow-[0_-1px_0_0] last:shadow-[0_1px_0_0_#fff3,0_-1px_0_0_#fff3] shadow-white/20 items-center uppercase "
         >
-            <span className="font-bold text-4xl">{text1}</span>
-            <span className="text-xs font-helvetica h-full flex flex-col justify-center">
+            <img
+                src={img}
+                alt="project"
+                className="rounded-xl block md:hidden w-full aspect-square"
+            />
+            <span className="font-bold text-2xl md:text-4xl w-full">
+                {text1}
+            </span>
+            <span className="text-xs font-helvetica w-full h-full flex flex-col justify-center tracking-widest">
                 <div className="overflow-clip h-[1.2rem]">
                     <span className="flex flex-col gap-2 duration-200 translate-y-0 group-hover:-translate-y-1/2 transition-transform">
                         <span className="leading-none">{text2}</span>
@@ -267,7 +327,7 @@ const ExpLinks = ({
                 </div>
             </span>
             <motion.div
-                className="grid h-full w-80 z-10 right-0 absolute origin-left pointer-events-none"
+                className="hidden md:grid h-full w-80 z-10 right-0 absolute origin-left pointer-events-none"
                 style={{
                     rotateZ: "-10deg",
                     // translateY: "50%",
@@ -281,5 +341,140 @@ const ExpLinks = ({
                 <FloatingCard img={img} width="w-[70%]" />
             </motion.div>
         </MotionLink>
+    );
+};
+
+const Carousel = () => {
+    const [index, setIndex] = useState(0);
+
+    // const x = useMotionTemplate`translateX(-${
+    //     index * (100 / carouselData.length)
+    // }%)`;
+    const x = useTransform(() => index * 100);
+
+    return (
+        <div className="w-[96%] rounded-xl bg-black/20 h-[80vh] grid justify-center justify-items-center items-center relative overflow-clip">
+            <div className="absolute inset-0 w-full h-full">
+                <AnimatePresence>
+                    <motion.img
+                        draggable={false}
+                        className="w-full h-full absolute inset-0 object-cover z-0"
+                        src={carouselData[index].img}
+                        alt="img"
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}
+                        transition={{
+                            duration: 0.2,
+                        }}
+                    />
+                </AnimatePresence>
+            </div>
+            <div className="w-[100%] max-w-[88vw] md:max-w-md flex flex-col items-stretch bg-white rounded-lg overflow-clip select-none z-10">
+                <div className="">
+                    <motion.div
+                        className="flex flex-row cursor-grab max-w-full"
+                        animate={{
+                            x: `-${x.get()}%`,
+                        }}
+                        transition={{
+                            duration: 0.4,
+                            ease: [0, 0, 0.6, 0.8],
+                        }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={(e, { offset, velocity }) => {
+                            const swipe = Math.abs(offset.x) * velocity.x;
+                            const threshold = 10000;
+                            if (swipe > threshold) {
+                                setIndex((init) =>
+                                    wrap(0, carouselData.length, init - 1)
+                                );
+                            }
+                            if (swipe < -threshold) {
+                                setIndex((init) =>
+                                    wrap(0, carouselData.length, init + 1)
+                                );
+                            }
+                        }}
+                    >
+                        {carouselData.map((data, i) => (
+                            <div
+                                className="flex flex-col items-center gap-4 justify-center w-full shrink-0 p-4 md:p-10"
+                                key={i}
+                            >
+                                <span className="text-center text-xl leading-snug">
+                                    {data.review}
+                                </span>
+                                <div className="flex flex-row gap-3 items-center">
+                                    <img
+                                        src={data.avatar}
+                                        alt="ava"
+                                        className="w-10 aspect-square rounded"
+                                    />
+                                    <div className="flex flex-col items-start">
+                                        <span className="text-sm">
+                                            {data.name}
+                                        </span>
+                                        <span className="text-sm opacity-70">
+                                            {data.project}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+                </div>
+                <div className="flex flex-row">
+                    <button
+                        className="group w-full h-16 flex flex-row gap-2 items-center justify-center text-sm shadow-[inset_-1px_1px_0_0] shadow-black/10"
+                        onClick={() => {
+                            setIndex((init) =>
+                                wrap(0, carouselData.length, init - 1)
+                            );
+                        }}
+                    >
+                        <div className="overflow-clip w-[1rem]">
+                            <span className="flex flex-row duration-200 group-hover:-translate-x-full translate-x-0 transition-transform text-sm ease-out">
+                                <span className="leading-none">
+                                    <ChevronLeft size={"1em"} />
+                                </span>
+                                <span className="leading-none">
+                                    <ChevronLeft size={"1em"} />
+                                </span>
+                            </span>
+                        </div>
+                        prev
+                    </button>
+                    <button
+                        className="group w-full h-16 flex flex-row gap-2 items-center justify-center text-sm shadow-[inset_0_1px_0_0] shadow-black/10"
+                        onClick={() => {
+                            setIndex((init) =>
+                                wrap(0, carouselData.length, init + 1)
+                            );
+                        }}
+                    >
+                        next
+                        <div className="overflow-clip w-[1rem]">
+                            <span className="flex flex-row duration-200 -translate-x-full group-hover:translate-x-0 transition-transform text-sm ease-out">
+                                <span className="leading-none">
+                                    <ChevronRight size={"1em"} />
+                                </span>
+                                <span className="leading-none">
+                                    <ChevronRight size={"1em"} />
+                                </span>
+                            </span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
     );
 };
